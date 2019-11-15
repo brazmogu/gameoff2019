@@ -29,8 +29,8 @@ func _ready():
     pass # Replace with function body.
 
 func _process(dt):
-    var collision:KinematicCollision2D = move_and_collide(dt * Vector2(hspeed, vspeed))
-    
+    move_and_slide(Vector2(hspeed, vspeed))
+   
     check_floor()
     
     if onFloor:
@@ -51,7 +51,10 @@ func jump():
         emit_signal("airborne")
     
 func walk(dir):
-    hspeed = dir * walkSpeed
+    var bump:KinematicCollision2D = move_and_collide(Vector2(dir, 0).normalized(), true, true, true)
+    
+    if bump == null:
+        hspeed = dir * walkSpeed
     
 func check_floor():
     var bump:KinematicCollision2D = move_and_collide(Vector2(0, 1), true, true, true)
