@@ -12,6 +12,8 @@ var following:bool = false
 var focusPoint:Vector2
 # Follow Velocity (pixels per second)
 var focusVelocity:Vector2
+# Offset to focus point
+export var focusOffset:Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,9 +30,9 @@ func _process(dt):
         following = false
 
 func startFollow():
-    if target.position.y < position.y:
+    if target.position.y < (position.y - focusOffset.y):
         following = true
-        focusPoint = target.position
+        focusPoint = target.position + focusOffset
         focusPoint.x = position.x
         focusVelocity = (focusPoint - position) / followTime
 

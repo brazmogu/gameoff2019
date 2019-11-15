@@ -1,35 +1,59 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scripts/TowerGenerator.gd" type="Script" id=1]
-[ext_resource path="res://Prefab/Midori.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scene/FollowCam.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/ScoreKeeper.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/TowerGenerator.gd" type="Script" id=2]
+[ext_resource path="res://Prefab/Midori.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scene/FollowCam.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/UI/ScoreLabel.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 80, 60 )
+extents = Vector2( 80, 72 )
 
 [node name="Sandbox" type="Node2D"]
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 
-[node name="Generator" type="Node2D" parent="."]
+[node name="Score Keeper" type="Node" parent="."]
 script = ExtResource( 1 )
+playerCharacterPath = NodePath("../Midori")
+
+[node name="Generator" type="Node2D" parent="."]
+script = ExtResource( 2 )
 base = "res://Prefab/Tower/TowerBase.tscn"
 
-[node name="Midori" parent="." instance=ExtResource( 2 )]
+[node name="Midori" parent="." instance=ExtResource( 3 )]
 position = Vector2( -48, -48 )
 jumpHeight = 32.0
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 0, -64 )
 current = true
-zoom = Vector2( 0.25, 0.25 )
-script = ExtResource( 3 )
+zoom = Vector2( 0.2, 0.2 )
+script = ExtResource( 4 )
 targetPath = NodePath("../Midori")
+followTime = 0.5
+focusOffset = Vector2( 0, 0 )
 
 [node name="Visible Area" type="Area2D" parent="Camera"]
 
 [node name="Trigger" type="CollisionShape2D" parent="Camera/Visible Area"]
 shape = SubResource( 1 )
+
+[node name="UI Canvas" type="CanvasLayer" parent="."]
+scale = Vector2( 4, 4 )
+transform = Transform2D( 4, 0, 0, 4, 0, 0 )
+
+[node name="Control" type="Control" parent="UI Canvas"]
+anchor_right = 1.0
+
+[node name="Score Label" type="Label" parent="UI Canvas/Control"]
+margin_right = 48.0
+margin_bottom = 16.0
+text = "00000"
+valign = 1
+script = ExtResource( 5 )
+scoreKeeperPath = NodePath("../../../Score Keeper")
+format = "%05.2fm"
 [connection signal="area_exited" from="Camera/Visible Area" to="Camera" method="_on_Visible_Area_area_exited"]
 [connection signal="body_exited" from="Camera/Visible Area" to="Camera" method="_on_Visible_Area_body_exited"]

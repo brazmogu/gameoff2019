@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/UI/ScoreLabel.gd" type="Script" id=1]
+
+[node name="UI Canvas" type="CanvasLayer"]
+scale = Vector2( 4, 4 )
+transform = Transform2D( 4, 0, 0, 4, 0, 0 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+
+[node name="Score Label" type="Label" parent="Control"]
+margin_right = 48.0
+margin_bottom = 16.0
+text = "00000"
+valign = 1
+script = ExtResource( 1 )
+scoreKeeperPath = NodePath("../../../Score Keeper")
+format = "%05.2fm"

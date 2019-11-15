@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scene/FollowCam.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 80, 72 )
+
+[node name="Camera" type="Camera2D"]
+position = Vector2( 0, -64 )
+current = true
+zoom = Vector2( 0.2, 0.2 )
+script = ExtResource( 1 )
+targetPath = NodePath("../Midori")
+followTime = 0.5
+focusOffset = Vector2( 0, 0 )
+
+[node name="Visible Area" type="Area2D" parent="."]
+
+[node name="Trigger" type="CollisionShape2D" parent="Visible Area"]
+shape = SubResource( 1 )
+[connection signal="area_exited" from="Visible Area" to="." method="_on_Visible_Area_area_exited"]
+[connection signal="body_exited" from="Visible Area" to="." method="_on_Visible_Area_body_exited"]
