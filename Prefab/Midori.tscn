@@ -21,6 +21,6 @@ region_rect = Rect2( 0, 0, 16, 16 )
 position = Vector2( 0, -8 )
 shape = SubResource( 1 )
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Movement" type="Node2D" parent="."]
 script = ExtResource( 3 )
 physicsNode = NodePath("..")
