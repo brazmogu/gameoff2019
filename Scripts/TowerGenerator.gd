@@ -9,8 +9,12 @@ var playerCharacter
 export (float) var spawnTreshold = 144
 var nextMapPosition = 0
 var nextMapSegments = null
+var rng:RandomNumberGenerator
 
 func _ready():
+    rng = RandomNumberGenerator.new()
+    rng.randomize()
+    
     spawnSegment(base)
     
     playerCharacter = get_node(playerNode)
@@ -28,4 +32,7 @@ func check_height():
     if abs(-playerCharacter.position.y - nextMapPosition) < spawnTreshold:
         var lastMapPosition = nextMapPosition
         while (nextMapPosition - lastMapPosition < spawnTreshold):
-            spawnSegment(nextMapSegments[0])
+            spawnSegment(pickNextSegment())
+
+func pickNextSegment():
+    return nextMapSegments[rng.randi_range(0, nextMapSegments.size()-1)]
