@@ -10,6 +10,8 @@ export var jumpTime:float = 0.5
 export var walkSpeed:float = 32
 # Time until stopping (on floor)
 export var dampTime:float = 0.25
+# Air walking influcence on horizontal speed
+export var airWalkDelta:float = 0.5
 
 var vspeed:float
 var hspeed:float
@@ -54,7 +56,10 @@ func walk(dir):
     var bump:KinematicCollision2D = move_and_collide(Vector2(dir, 0).normalized(), true, true, true)
     
     if bump == null:
-        hspeed = dir * walkSpeed
+        if onFloor:
+            hspeed = dir * walkSpeed
+        if onAir:
+            hspeed = clamp(hspeed + dir * airWalkDelta, -walkSpeed, walkSpeed)
     
 func check_floor():
     var bump:KinematicCollision2D = move_and_collide(Vector2(0, 1), true, true, true)
