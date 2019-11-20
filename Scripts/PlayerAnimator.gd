@@ -26,6 +26,9 @@ func _process(dt):
             if physics.hspeed * facingDirection < 0:
                 facingDirection = -facingDirection
                 physics.scale.x = -1 
+        "Leap":
+            if physics.vspeed >= 0:
+                play("Fall", 0.1)
 
 func on_land():
     if current_animation == "Fall":
