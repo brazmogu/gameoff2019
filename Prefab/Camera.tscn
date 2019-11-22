@@ -19,4 +19,3 @@ focusOffset = Vector2( 0, 0 )
 [node name="Trigger" type="CollisionShape2D" parent="Visible Area"]
 shape = SubResource( 1 )
 [connection signal="area_exited" from="Visible Area" to="." method="_on_Visible_Area_area_exited"]
-[connection signal="body_exited" from="Visible Area" to="." method="_on_Visible_Area_body_exited"]

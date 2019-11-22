@@ -15,6 +15,8 @@ var focusVelocity:Vector2
 # Offset to focus point
 export var focusOffset:Vector2
 
+signal off_camera
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     target = get_node(targetPath)
@@ -30,15 +32,12 @@ func _process(dt):
         following = false
 
 func startFollow():
-    if target.position.y < (position.y - focusOffset.y):
+    if target.position.y < position.y:
         following = true
         focusPoint = target.position + focusOffset
         focusPoint.x = position.x
         focusVelocity = (focusPoint - position) / followTime
 
 func _on_Visible_Area_area_exited(area):
-    print("Something Left")
+    emit_signal("off_camera", area)
 
-
-func _on_Visible_Area_body_exited(body):
-    print("Something Left:", body)
