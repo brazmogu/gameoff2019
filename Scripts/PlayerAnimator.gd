@@ -38,4 +38,4 @@ func on_air():
     if physics.vspeed < 0:
         play("Leap", 0.1)
     else:
-        play("Fall", 0.1)
+        play("Fall", 0.2)
