@@ -25,7 +25,7 @@ func spawnSegment(segmentPath):
     segment.position.y = -nextMapPosition
     add_child(segment)
     
-    nextMapPosition += segment.get_used_rect().size[1] * segment.cell_size[1]
+    nextMapPosition += segment.get_used_rect().size[1] * segment.scale[1] * segment.cell_size[1]
     nextMapSegments = segment.nextSegments
 
 func check_height():
