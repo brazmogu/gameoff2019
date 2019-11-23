@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/TitleScreenController.gd" type="Script" id=1]
+[ext_resource path="res://Prefab/FadeBlack.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Sprite/title_screen.png" type="Texture" id=3]
+
+[node name="Root" type="Node2D"]
+script = ExtResource( 1 )
+gameScene = "res://Scene/Sandbox.tscn"
+
+[node name="Fade UI" parent="." instance=ExtResource( 2 )]
+
+[node name="Title Screen" type="Sprite" parent="."]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true

@@ -1,32 +1,36 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scripts/ScoreKeeper.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/TowerGenerator.gd" type="Script" id=2]
-[ext_resource path="res://Prefab/Midori.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prefab/Camera.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Prefab/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefab/FadeBlack.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefab/HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/ScoreKeeper.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/TowerGenerator.gd" type="Script" id=4]
+[ext_resource path="res://Prefab/Midori.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefab/Camera.tscn" type="PackedScene" id=6]
 
 [node name="Sandbox" type="Node2D"]
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 
+[node name="Fade UI" parent="." instance=ExtResource( 1 )]
+
+[node name="UI Canvas" parent="." instance=ExtResource( 2 )]
+
 [node name="Score Keeper" type="Node" parent="."]
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 playerCharacterPath = NodePath("../Midori")
 
 [node name="Generator" type="Node2D" parent="."]
-script = ExtResource( 2 )
+script = ExtResource( 4 )
 base = "res://Prefab/Tower/TowerBase.tscn"
 playerNode = NodePath("../Midori")
 
-[node name="Midori" parent="." instance=ExtResource( 3 )]
+[node name="Midori" parent="." instance=ExtResource( 5 )]
 position = Vector2( -48, -48 )
 jumpHeight = 32.0
 
-[node name="Camera" parent="." instance=ExtResource( 4 )]
+[node name="Camera" parent="." instance=ExtResource( 6 )]
 position = Vector2( 0, -72 )
 zoom = Vector2( 0.25, 0.25 )
 focusOffset = Vector2( 0, -72 )
-
-[node name="UI Canvas" parent="." instance=ExtResource( 5 )]
+[connection signal="ready" from="." to="Fade UI" method="fade_in"]
