@@ -4,7 +4,10 @@ const TowerSegment = preload("TowerSegment.gd")
 
 export (String, FILE, "Tower*.tscn") var base
 export (NodePath) var playerNode
-var playerCharacter
+onready var playerCharacter = get_node(playerNode)
+
+export (NodePath) var cameraNode
+onready var camera = get_node(cameraNode)
 
 export (float) var spawnTreshold = 144
 var nextMapPosition = 0
@@ -17,8 +20,8 @@ func _ready():
     
     spawnSegment(base)
     
-    playerCharacter = get_node(playerNode)
     playerCharacter.connect("floored", self, "check_height")
+    camera.connect("off_camera", self, "checkSegmentForRemoval")
 
 func spawnSegment(segmentPath):
     var segment:TowerSegment = load(segmentPath).instance()
@@ -36,3 +39,10 @@ func check_height():
 
 func pickNextSegment():
     return nextMapSegments[rng.randi_range(0, nextMapSegments.size()-1)]
+    
+func checkSegmentForRemoval(segment):
+    for child in get_children():
+        if segment.get_parent() == child:
+            remove_child(segment)
+            segment.queue_free()
+            return

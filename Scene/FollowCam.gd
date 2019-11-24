@@ -3,6 +3,10 @@ extends Camera2D
 export(NodePath) var targetPath
 var target:Node2D
 
+export(NodePath) var fadeOutPath
+
+# Follow Threshold
+export var followThreshold:Vector2
 # Follow time (seconds)
 export(float) var followTime = 1.0
 
@@ -32,12 +36,23 @@ func _process(dt):
         following = false
 
 func startFollow():
-    if target.position.y < position.y:
+    if target.position.y < position.y - followThreshold.y:
         following = true
         focusPoint = target.position + focusOffset
         focusPoint.x = position.x
         focusVelocity = (focusPoint - position) / followTime
 
-func _on_Visible_Area_area_exited(area):
-    emit_signal("off_camera", area)
+func _on_Visible_Area_body_exited(body):
+    emit_signal("off_camera", body)
 
+func _on_Survival_Area_body_exited(body):
+    if body == target:
+        target.get_parent()
+        body.queue_free()
+        
+        var fadeOut = get_node(fadeOutPath)
+        fadeOut.connect("faded", self, "on_fade_out")
+        fadeOut.fade_out(2)
+
+func on_fade_out():
+    get_tree().change_scene("res://Scene/Title.tscn")
