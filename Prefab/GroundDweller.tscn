@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/AI/GroundDwellerController.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprite/green.png" type="Texture" id=2]
@@ -6,21 +6,122 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "Skitter"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Leg 1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10.2402, -46.4241 ), Vector2( -5.78793, -49.5407 ), Vector2( -6.23317, -47.7598 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Leg 1:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.501, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 7.75221, 7.75221, -25.9507 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Leg 2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -9.42111, -43.0114 ), Vector2( 12.8401, -45.6828 ), Vector2( -23.0959, -46.446 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Leg 2:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -33.7593, -0.913603, 0.223747 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:scale")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.05 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -8.4637, -55.8653 ), Vector2( -7.12803, -59.8723 ) ]
+}
+
 [node name="GroundDweller" type="KinematicBody2D"]
 script = ExtResource( 1 )
 bounce = 1.5
+
+[node name="Leg 2" type="Sprite" parent="."]
+position = Vector2( -14.1503, -43.4687 )
+rotation = -0.520132
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+vframes = 4
+hframes = 4
+frame = 7
+
+[node name="Body" type="Sprite" parent="."]
+position = Vector2( -7.77301, -57.9374 )
+rotation = -0.0121947
+scale = Vector2( 0.948289, 1.02586 )
+texture = ExtResource( 2 )
+vframes = 4
+hframes = 4
+frame = 6
+
+[node name="Leg 1" type="Sprite" parent="."]
+position = Vector2( 5.97014, -47.3158 )
+rotation = 0.0361692
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+vframes = 4
+hframes = 4
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
-[node name="CanvasModulate" type="Sprite" parent="."]
-position = Vector2( -0.615679, -2.17856 )
-texture = ExtResource( 2 )
-vframes = 4
-hframes = 4
-
 [node name="Floor Checker" type="RayCast2D" parent="."]
 position = Vector2( 0, -32 )
 enabled = true
 cast_to = Vector2( 36, 36 )
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+autoplay = "Skitter"
+anims/Skitter = SubResource( 2 )
