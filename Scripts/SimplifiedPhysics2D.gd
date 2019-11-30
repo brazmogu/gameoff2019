@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 class_name SimplifiedPhysics2D
 
+# Ignore gravity
+export var ignoreGravity:float = false
 # Height of jump
 export var jumpHeight:float = 16
 # Time of jump (until peak of jump)
@@ -13,10 +15,10 @@ export var dampTime:float = 0.25
 # Air walking influcence on horizontal speed
 export var airWalkDelta:float = 0.5
 
-var vspeed:float
-var hspeed:float
-var friction:float
-var gravity:float
+var vspeed:float = 0
+var hspeed:float = 0
+var friction:float = 0
+var gravity:float = 0
 
 var debug_velocity:Vector2
 
@@ -29,10 +31,9 @@ signal bounce
 signal pushback
 
 func _ready():
-    friction = walkSpeed / dampTime
-    gravity = 2 * jumpHeight / pow(jumpTime, 2)
-        
-    pass # Replace with function body.
+    if not ignoreGravity:
+        friction = walkSpeed / dampTime
+        gravity = 2 * jumpHeight / pow(jumpTime, 2)
 
 func _process(dt):
     var velocity = move_and_slide(Vector2(hspeed, vspeed), Vector2(0, -1))
