@@ -1,21 +1,26 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/NPCActor.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/AI/GroundDwellerController.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprite/green.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 4 )
+extents = Vector2( 32, 32 )
 
 [node name="GroundDweller" type="KinematicBody2D"]
 script = ExtResource( 1 )
+bounce = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -4 )
+position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
 [node name="CanvasModulate" type="Sprite" parent="."]
 position = Vector2( -0.615679, -2.17856 )
-scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 4
+
+[node name="Floor Checker" type="RayCast2D" parent="."]
+position = Vector2( 0, -32 )
+enabled = true
+cast_to = Vector2( 36, 36 )
