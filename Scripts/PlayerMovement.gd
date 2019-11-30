@@ -19,3 +19,6 @@ func _process(dt):
     if Input.is_action_pressed("ui_left"):
         physicsBody.walk(-1)
     
+
+func _onPlayerReady():
+    physicsBody.jump(2.5, true)

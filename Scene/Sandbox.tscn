@@ -27,7 +27,7 @@ playerNode = NodePath("../Midori")
 cameraNode = NodePath("../Camera")
 
 [node name="Midori" parent="." instance=ExtResource( 5 )]
-position = Vector2( -48, -48 )
+position = Vector2( -48, 48 )
 jumpHeight = 32.0
 
 [node name="Camera" parent="." instance=ExtResource( 6 )]

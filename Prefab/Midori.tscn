@@ -595,8 +595,8 @@ extents = Vector2( 4, 8 )
 script = ExtResource( 1 )
 
 [node name="Right Hand" type="Sprite" parent="."]
-position = Vector2( -6.5869, -2.24945 )
-rotation = 0.402472
+position = Vector2( 1.09893, 1.95961 )
+rotation = -0.379177
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -64 )
@@ -605,8 +605,8 @@ hframes = 4
 frame = 2
 
 [node name="Right Foot" type="Sprite" parent="."]
-position = Vector2( 1.23409, -0.0492256 )
-rotation = -0.120889
+position = Vector2( -2.13767, -0.539026 )
+rotation = 0.0859462
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -64 )
@@ -615,8 +615,7 @@ hframes = 4
 frame = 5
 
 [node name="Head" type="Sprite" parent="."]
-position = Vector2( -0.568962, -0.406698 )
-rotation = -12.4571
+position = Vector2( -0.568962, -0.517921 )
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -64 )
@@ -624,8 +623,8 @@ vframes = 4
 hframes = 4
 
 [node name="Left Foot" type="Sprite" parent="."]
-position = Vector2( -0.654605, -0.423815 )
-rotation = 0.284278
+position = Vector2( 1.45129, -0.0985818 )
+rotation = -0.157362
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -64 )
@@ -634,8 +633,8 @@ hframes = 4
 frame = 4
 
 [node name="Body" type="Sprite" parent="."]
-position = Vector2( -0.1024, -0.132125 )
-rotation = 0.0105602
+position = Vector2( 0.208423, -0.168302 )
+rotation = -0.0486569
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -64 )
@@ -644,8 +643,8 @@ hframes = 4
 frame = 3
 
 [node name="Left Hand" type="Sprite" parent="."]
-position = Vector2( 4.50068, -2.79332 )
-rotation = -0.77919
+position = Vector2( 1.89241, -1.19505 )
+rotation = -0.349804
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -64 )
@@ -668,3 +667,4 @@ shape = SubResource( 5 )
 [node name="Movement" type="Node2D" parent="."]
 script = ExtResource( 4 )
 animatorNode = NodePath("../Animator")
+[connection signal="ready" from="." to="Movement" method="_onPlayerReady"]
