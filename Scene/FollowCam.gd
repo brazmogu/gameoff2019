@@ -43,7 +43,8 @@ func startFollow():
         focusVelocity = (focusPoint - position) / followTime
 
 func _on_Visible_Area_body_exited(body):
-    emit_signal("off_camera", body)
+    if body is TileMap:
+        emit_signal("off_camera", body)
 
 func _on_Survival_Area_body_exited(body):
     if body == target:
