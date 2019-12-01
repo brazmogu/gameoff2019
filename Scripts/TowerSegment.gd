@@ -16,3 +16,6 @@ func _ready():
 
 func get_used_rect():
     return total_rect
+
+func _off_camera():
+    get_parent().remove_child(self)

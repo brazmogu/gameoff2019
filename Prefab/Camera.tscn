@@ -18,12 +18,15 @@ followTime = 0.5
 focusOffset = Vector2( 0, 0 )
 
 [node name="Visible Area" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="Trigger" type="CollisionShape2D" parent="Visible Area"]
 shape = SubResource( 1 )
 
 [node name="Survival Area" type="Area2D" parent="."]
 position = Vector2( 0, 24 )
+collision_layer = 0
+collision_mask = 2
 
 [node name="Trigger" type="CollisionShape2D" parent="Survival Area"]
 shape = SubResource( 2 )
