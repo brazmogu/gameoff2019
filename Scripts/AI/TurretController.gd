@@ -6,11 +6,11 @@ export (float) var firstShotDelay = 0.0
 # Delay between shots
 export (float) var shotInterval = 1.0
 # Shooting vector
-export (Vector2) var shootDirection = Vector2(1, 0)
+export (Vector2) var shootDirection = Vector2(16, 0)
 # Shooting spawn point
 export (Vector2) var gunPosition = Vector2(0, -40)
 
-var shotTime
+onready var shotTime = firstShotDelay
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,17 +18,18 @@ func _ready():
         scale.x = -1
 
 func _process(dt):
-    if Engine.editor_hint():
+    if Engine.editor_hint:
         update()
         return
     
     shotTime = shotTime - dt
-    if shotTime >= shotInterval:
-        shotTime = shotTime - shotInterval
+    if shotTime <= 0:
+        shotTime = shotTime + shotInterval
         shoot()
 
 func shoot():
     var shot = load("res://Prefab/TurretShot.tscn").instance()
+    shot.setSpeed(shootDirection)
     add_child(shot)
     shot.position = gunPosition
 

@@ -9,6 +9,7 @@ extents = Vector2( 30, 50 )
 [node name="Turret" type="KinematicBody2D"]
 script = ExtResource( 1 )
 pushback = 0.0
+shootDirection = Vector2( 1, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -50 )

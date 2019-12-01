@@ -2,9 +2,8 @@ extends KinematicBody2D
 
 var shotSpeed:Vector2
 
-func _ready():
-    pass # Replace with function body.
+func setSpeed(velocity:Vector2):
+    shotSpeed = velocity
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
+func _process(delta):
+    move_and_collide(delta * shotSpeed, true)
