@@ -9,9 +9,10 @@ var route_direction = 1
 export (float) var flySpeed = 16
 
 func _ready():
-    for i in range(waypoints.size()):
-        waypoints[i] = waypoints[i] + position
-    position = waypoints[0]
+    if not Engine.editor_hint:
+        for i in range(waypoints.size()):
+            waypoints[i] = waypoints[i] + position
+        position = waypoints[0]
 
 func _process(dt):
     if Engine.editor_hint:
@@ -28,7 +29,6 @@ func _process(dt):
             next_point = next_point + 2*route_direction
     else:
         var result = move_and_slide(move_vector.normalized() * flySpeed)
-        print(move_vector.length(), " ", result, " ", flySpeed * dt)
         
 func _draw():
     if Engine.editor_hint:
