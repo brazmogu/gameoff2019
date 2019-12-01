@@ -24,14 +24,20 @@ tile_data = PoolIntArray( -524293, 536870912, 0, -524292, 3, 0, -524291, 3, 0, -
 [node name="Turret" parent="." instance=ExtResource( 3 )]
 position = Vector2( -280, -240 )
 scale = Vector2( 1, 1 )
-shootDirection = Vector2( 1, 0 )
+firstShotDelay = 1.0
+shotInterval = 3.0
+shootDirection = Vector2( 16, 0 )
 
 [node name="Turret2" parent="." instance=ExtResource( 3 )]
 position = Vector2( -271.414, -560 )
 scale = Vector2( 1, 1 )
-shootDirection = Vector2( 1, 0 )
+firstShotDelay = 1.0
+shotInterval = 3.0
+shootDirection = Vector2( 16, 0 )
 
 [node name="Turret3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 280, -400 )
-scale = Vector2( 1, 1 )
-shootDirection = Vector2( -1, 0 )
+scale = Vector2( -1, 1 )
+firstShotDelay = 1.0
+shotInterval = 3.0
+shootDirection = Vector2( -16, 0 )
