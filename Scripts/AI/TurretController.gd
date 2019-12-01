@@ -1,6 +1,9 @@
 tool
 extends "res://Scripts/NPCActor.gd"
 
+export (NodePath) var animatorNode = "Animator"
+onready var animator = get_node(animatorNode)
+
 # Time to firs shot
 export (float) var firstShotDelay = 0.0
 # Delay between shots
@@ -15,7 +18,7 @@ onready var shotTime = firstShotDelay
 # Called when the node enters the scene tree for the first time.
 func _ready():
     if shootDirection.x < 0:
-        scale.x = -1
+        get_node("Sprite").scale.x = -1
 
 func _process(dt):
     if Engine.editor_hint:
@@ -28,10 +31,11 @@ func _process(dt):
         shoot()
 
 func shoot():
+    animator.play("Shoot")
     var shot = load("res://Prefab/TurretShot.tscn").instance()
     shot.setSpeed(shootDirection)
-    add_child(shot)
-    shot.position = gunPosition
+    get_parent().add_child(shot)
+    shot.position = position + gunPosition
 
 func _draw():
     if Engine.editor_hint:
