@@ -30,6 +30,12 @@ window/size/width=640
 window/size/height=576
 window/size/resizable=false
 
+[layer_names]
+
+2d_physics/layer_1="Terrain"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="NPC"
+
 [physics]
 
 2d/physics_engine="GodotPhysics"
