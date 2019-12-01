@@ -10,7 +10,7 @@ extents = Vector2( 32, 32 )
 resource_name = "Skitter"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Leg 1:position")
+tracks/0/path = NodePath("../GroundDweller/Leg 1:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ Vector2( 10.2402, -46.4241 ), Vector2( -5.78793, -49.5407 ), Vector2( -6.23317, -47.7598 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Leg 1:rotation_degrees")
+tracks/1/path = NodePath("../GroundDweller/Leg 1:rotation_degrees")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -34,7 +34,7 @@ tracks/1/keys = {
 "values": [ 0.0, 7.75221, 7.75221, -25.9507 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Leg 2:position")
+tracks/2/path = NodePath("../GroundDweller/Leg 2:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -46,7 +46,7 @@ tracks/2/keys = {
 "values": [ Vector2( -9.42111, -43.0114 ), Vector2( 12.8401, -45.6828 ), Vector2( -23.0959, -46.446 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Leg 2:rotation_degrees")
+tracks/3/path = NodePath("../GroundDweller/Leg 2:rotation_degrees")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -58,7 +58,7 @@ tracks/3/keys = {
 "values": [ -33.7593, -0.913603, 0.223747 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Body:scale")
+tracks/4/path = NodePath("../GroundDweller/Body:scale")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -70,7 +70,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.05 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Body:position")
+tracks/5/path = NodePath("../GroundDweller/Body:position")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -83,12 +83,13 @@ tracks/5/keys = {
 }
 
 [node name="GroundDweller" type="KinematicBody2D"]
+collision_mask = 3
 script = ExtResource( 1 )
 bounce = 1.5
 
 [node name="Leg 2" type="Sprite" parent="."]
-position = Vector2( -14.1503, -43.4687 )
-rotation = -0.520132
+position = Vector2( 3.72176, -44.276 )
+rotation = -0.308974
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 2 )
 vframes = 4
@@ -96,17 +97,17 @@ hframes = 4
 frame = 7
 
 [node name="Body" type="Sprite" parent="."]
-position = Vector2( -7.77301, -57.9374 )
+position = Vector2( -7.14588, -59.8188 )
 rotation = -0.0121947
-scale = Vector2( 0.948289, 1.02586 )
+scale = Vector2( 0.901337, 1.04933 )
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 4
 frame = 6
 
 [node name="Leg 1" type="Sprite" parent="."]
-position = Vector2( 5.97014, -47.3158 )
-rotation = 0.0361692
+position = Vector2( -1.54126, -48.8525 )
+rotation = 0.09973
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 2 )
 vframes = 4

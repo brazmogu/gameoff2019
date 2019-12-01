@@ -12,6 +12,7 @@ var SimplifiedPhysics2D = load("res://Scripts/SimplifiedPhysics2D.gd")
 
 func _ready():
     raycaster = get_node(raycasterNode)
+    scale.x = scale.x * direction
     
 func _process(dt):
     move_and_slide(Vector2(direction, 0) * walkSpeed, Vector2.UP)
