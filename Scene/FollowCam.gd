@@ -48,7 +48,7 @@ func _on_Visible_Area_body_exited(body):
         mapRoot.call("_off_camera")
 
 func _on_Survival_Area_body_exited(body):
-    if body == target:
+    if body == target and target.position.y > position.y:
         target.get_parent()
         body.queue_free()
         
