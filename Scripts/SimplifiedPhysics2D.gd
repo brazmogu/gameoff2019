@@ -61,6 +61,10 @@ func jump(height := 1.0, force := false):
         onFloor = false
         emit_signal("airborne")
 
+func push(pushback:float, direction:Vector2):
+    jump(0.25, true)
+    hspeed = direction.x * pushback
+
 func walk(dir):
     var bump:KinematicCollision2D = move_and_collide(Vector2(dir, 0).normalized(), true, true, true)
     
@@ -95,8 +99,7 @@ func check_bounce():
                     return true
         if abs(collision.normal.x) > 0.8:
             if "pushback" in collision.collider:
-                jump(0.25, true)
-                hspeed = collision.normal.x * collision.collider.pushback
+                self.push(collision.collider.pushback, collision.normal)
                 return true
             
     return false
