@@ -23,10 +23,10 @@ tile_data = PoolIntArray( -786437, 536870912, 0, -851965, 2, 0, -851964, 0, 0, -
 
 [node name="GroundDweller" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -320 )
+bounce = 2.0
 
 [node name="GroundDweller2" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 0.101961, 1 )
 position = Vector2( -80, -640 )
 scale = Vector2( 0.75, 0.75 )
-bounce = 2.0
 pushback = 16.0
