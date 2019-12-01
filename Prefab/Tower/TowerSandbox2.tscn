@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/TowerSegment.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Tileset/Tower_1.tres" type="TileSet" id=2]
+[ext_resource path="res://Prefab/FlyMech.tscn" type="PackedScene" id=3]
 
 [node name="MapRoot" type="Node2D"]
 scale = Vector2( 0.2, 0.2 )
 script = ExtResource( 1 )
-nextSegments = [ "res://Prefab/Tower/TowerSandbox1.tscn" ]
+nextSegments = [ "res://Prefab/Tower/TowerSandbox1.tscn", "res://Prefab/Tower/TowerSandbox3.tscn" ]
 
 [node name="Backdrop" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -18,4 +19,14 @@ tile_data = PoolIntArray( -524292, 6, 0, -524291, 7, 0, -524290, 7, 0, -524289, 
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 80, 80 )
 format = 1
-tile_data = PoolIntArray( -524293, 536870912, 0, -524292, 5, 0, -589820, 536870912, 0, -458757, 0, 0, -458756, 3, 0, -458755, 5, 0, -524284, 0, 0, -393221, 0, 0, -458748, 0, 0, -327685, 0, 0, -327684, 5, 0, -393212, 0, 0, -262149, 536870912, 0, -327676, 536870912, 0, -196613, 0, 0, -196612, 5, 0, -196609, 2, 0, -262144, 5, 0, -262141, 2, 0, -262140, 0, 0, -131077, 0, 0, -196604, 0, 0, -65541, 0, 0, -131069, 2, 0, -131068, 0, 0, -5, 1, 0, -65532, 1, 0 )
+tile_data = PoolIntArray( -524293, 536870912, 0, -524292, 5, 0, -589820, 536870912, 0, -458757, 0, 0, -458756, 3, 0, -458755, 5, 0, -524284, 0, 0, -393221, 0, 0, -458748, 0, 0, -327685, 0, 0, -327684, 5, 0, -393212, 0, 0, -262149, 536870912, 0, -327676, 536870912, 0, -196613, 0, 0, -196612, 5, 0, -262141, 2, 0, -262140, 0, 0, -131077, 0, 0, -196604, 0, 0, -65541, 0, 0, -131069, 2, 0, -131068, 0, 0, -5, 1, 0, -65532, 1, 0 )
+
+[node name="FlyMech" parent="." instance=ExtResource( 3 )]
+position = Vector2( -80, -240 )
+bounce = 1.5
+waypoints = [ Vector2( 0, 40 ), Vector2( 0, -40 ) ]
+
+[node name="FlyMech2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 80, -240 )
+bounce = 1.5
+waypoints = [ Vector2( 0, -40 ), Vector2( 0, 40 ) ]

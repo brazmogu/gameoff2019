@@ -6,7 +6,7 @@
 [node name="MapRoot" type="Node2D"]
 scale = Vector2( 0.2, 0.2 )
 script = ExtResource( 1 )
-nextSegments = [ "res://Prefab/Tower/TowerSandbox1.tscn", "res://Prefab/Tower/TowerSandbox2.tscn" ]
+nextSegments = [ "res://Prefab/Tower/TowerSandbox1.tscn", "res://Prefab/Tower/TowerSandbox2.tscn", "res://Prefab/Tower/TowerSandbox3.tscn" ]
 
 [node name="Backdrop" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
