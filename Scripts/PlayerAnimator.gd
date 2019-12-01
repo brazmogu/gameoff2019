@@ -31,7 +31,7 @@ func _process(dt):
                 play("Fall", 0.1)
 
 func on_land():
-    if current_animation == "Fall":
+    if current_animation == "Fall" || current_animation == "Leap":
         play("Idle", 0.1)
 
 func on_air():
